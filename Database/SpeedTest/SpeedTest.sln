@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkInsert", "BulkInsert\Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleInsert", "SimpleInsert\SimpleInsert.csproj", "{C24E1E25-5AAF-47B6-86F6-909FC05E1C9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrepareInsert", "PrepareInsert\PrepareInsert.csproj", "{95BA0076-0EB6-4F7D-B914-ECB4FEFFB5C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{C24E1E25-5AAF-47B6-86F6-909FC05E1C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C24E1E25-5AAF-47B6-86F6-909FC05E1C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C24E1E25-5AAF-47B6-86F6-909FC05E1C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95BA0076-0EB6-4F7D-B914-ECB4FEFFB5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95BA0076-0EB6-4F7D-B914-ECB4FEFFB5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95BA0076-0EB6-4F7D-B914-ECB4FEFFB5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95BA0076-0EB6-4F7D-B914-ECB4FEFFB5C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
