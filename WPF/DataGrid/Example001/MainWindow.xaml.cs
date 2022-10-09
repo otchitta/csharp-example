@@ -4,9 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Threading;
-using Otchitta.Example001.ViewModels;
+using Otchitta.Example.ViewModels;
 
-namespace Otchitta.Example001;
+namespace Otchitta.Example;
 
 /// <summary>
 /// メインウィンドウクラスです。

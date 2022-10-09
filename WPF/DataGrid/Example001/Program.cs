@@ -2,7 +2,7 @@ using System;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace Otchitta.Example001;
+namespace Otchitta.Example;
 
 /// <summary>
 /// 実行処理クラスです。

@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Otchitta.Example001.ViewModels;
+namespace Otchitta.Example.ViewModels;
 
 /// <summary>
 /// 基底画面モデルクラスです。

@@ -1,4 +1,4 @@
-namespace Otchitta.Example001.ViewModels;
+namespace Otchitta.Example.ViewModels;
 
 /// <summary>
 /// 列画面モデルクラスです。

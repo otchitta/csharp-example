@@ -1,8 +1,8 @@
 using System;
 using System.Collections.ObjectModel;
-using Otchitta.Example001.ViewModels;
+using Otchitta.Example.ViewModels;
 
-namespace Otchitta.Example001;
+namespace Otchitta.Example;
 
 /// <summary>
 /// 主体画面モデルクラスです。

@@ -1,6 +1,6 @@
 ﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="Otchitta.Example001.MainWindow"
+        x:Class="Otchitta.Example.MainWindow"
         Title="列処理サンプル１"
         Width="400"
         Height="400">
