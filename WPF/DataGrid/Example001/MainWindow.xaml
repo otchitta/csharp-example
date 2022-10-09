@@ -1,0 +1,23 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Otchitta.Example001.MainWindow"
+        Title="列処理サンプル１"
+        Width="400"
+        Height="400">
+  <StackPanel>
+    <Button Content="Item01列の名称を変更"
+            Click="Button_OnClick1" />
+    <Button Content="Item02列の表示を変更"
+            Click="Button_OnClick2" />
+    <DataGrid x:Name="Records"
+              IsReadOnly="True"
+              ItemsSource="{Binding Records}"
+              AutoGenerateColumns="False">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Item01" Binding="{Binding Path=Item01}" />
+        <DataGridTextColumn Header="Item02" Binding="{Binding Path=Item02}" />
+        <DataGridTextColumn Header="Item03" Binding="{Binding Path=Item03}" />
+      </DataGrid.Columns>
+    </DataGrid>
+  </StackPanel>
+</Window>
