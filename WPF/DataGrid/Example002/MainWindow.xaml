@@ -1,0 +1,220 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="clr-namespace:Otchitta.Example"
+        xmlns:b="clr-namespace:Otchitta.Example"
+        x:Class="Otchitta.Example.MainWindow"
+        Title="列処理サンプル２"
+        Width="1024"
+        Height="576">
+  <Window.DataContext>
+    <m:MainViewModel />
+  </Window.DataContext>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="100*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!-- メニュー領域(↓) -->
+    <Menu Grid.Row="0"
+          KeyboardNavigation.TabNavigation="None"
+          KeyboardNavigation.ControlTabNavigation="None"
+          KeyboardNavigation.DirectionalNavigation="None">
+      <MenuItem Header="ファイル(_F)">
+        <MenuItem Header="終了(_X)" Click="ActionClose" />
+      </MenuItem>
+      <MenuItem Header="情報(_I)">
+        <MenuItem Header="列削除(_A)"
+                  Command="{Binding Path=RemoveMenu}"
+                  CommandParameter="column" />
+        <MenuItem Header="行削除(_A)"
+                  Command="{Binding Path=RemoveMenu}"
+                  CommandParameter="record" />
+        <MenuItem Header="全削除(_A)"
+                  Command="{Binding Path=RemoveMenu}"
+                  CommandParameter="remove" />
+      </MenuItem>
+      <MenuItem Header="ヘルプ(_H)">
+        <MenuItem Header="バージョン情報(_V)" />
+      </MenuItem>
+    </Menu>
+    <!-- メニュー領域(↑) -->
+
+    <!-- 操作領域(↓) -->
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*" />
+        <ColumnDefinition Width="05" />
+        <ColumnDefinition Width="4*" />
+      </Grid.ColumnDefinitions>
+      <Grid Grid.Column="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="35" />
+          <ColumnDefinition Width="35" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="100*" />
+        </Grid.RowDefinitions>
+        <TextBox Text="{Binding Path=ColumnData.Code}"
+                 Grid.Row="0" Grid.Column="0" />
+        <TextBox Text="{Binding Path=ColumnData.Name}"
+                 Grid.Row="0" Grid.Column="1" />
+        <Button Content="挿入"
+                Command="{Binding Path=InsertMenu}"
+                CommandParameter="column"
+                Grid.Row="0" Grid.Column="2" />
+        <Button Content="追加"
+                Command="{Binding Path=AppendMenu}"
+                CommandParameter="column"
+                Grid.Row="0" Grid.Column="3" />
+        <DataGrid ItemsSource="{Binding Path=ColumnList}"
+                  SelectedIndex="{Binding Path=ColumnCode}"
+                  HeadersVisibility="Column"
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single"
+                  CanUserSortColumns="False"
+                  CanUserResizeColumns="False"
+                  CanUserReorderColumns="False"
+                  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="経路" Binding="{Binding Path=Code}" Width="1*" />
+            <DataGridTextColumn Header="名称" Binding="{Binding Path=Name}" Width="1*" />
+            <DataGridTemplateColumn Header="表示" Width="35" MinWidth="35" MaxWidth="35">
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                  <CheckBox IsChecked="{Binding Path=Show, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Header="削除" Width="35" MinWidth="35" MaxWidth="35">
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                  <Button Content="削除"
+                          Command="{Binding Path=DataContext.RemoveMenu, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGrid}}"
+                          CommandParameter="{Binding}" />
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </Grid>
+      <GridSplitter ResizeBehavior="PreviousAndNext"
+                    ResizeDirection="Columns"
+                    ShowsPreview="False"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Grid.Column="1" />
+      <Grid Grid.Column="2">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="1*" MinWidth="40" />
+          <ColumnDefinition Width="35" />
+          <ColumnDefinition Width="35" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="100*" />
+        </Grid.RowDefinitions>
+        <TextBox Text="{Binding Path=RecordData.Item01}"
+                 Grid.Row="0" Grid.Column="0" />
+        <TextBox Text="{Binding Path=RecordData.Item02}"
+                 Grid.Row="0" Grid.Column="1" />
+        <TextBox Text="{Binding Path=RecordData.Item03}"
+                 Grid.Row="0" Grid.Column="2" />
+        <TextBox Text="{Binding Path=RecordData.Item04}"
+                 Grid.Row="0" Grid.Column="3" />
+        <TextBox Text="{Binding Path=RecordData.Item05}"
+                 Grid.Row="0" Grid.Column="4" />
+        <TextBox Text="{Binding Path=RecordData.Item06}"
+                 Grid.Row="0" Grid.Column="5" />
+        <TextBox Text="{Binding Path=RecordData.Item07}"
+                 Grid.Row="0" Grid.Column="6" />
+        <TextBox Text="{Binding Path=RecordData.Item08}"
+                 Grid.Row="0" Grid.Column="7" />
+        <TextBox Text="{Binding Path=RecordData.Item09}"
+                 Grid.Row="0" Grid.Column="8" />
+        <TextBox Text="{Binding Path=RecordData.Item10}"
+                 Grid.Row="0" Grid.Column="9" />
+        <Button Content="挿入"
+                Command="{Binding Path=InsertMenu}"
+                CommandParameter="record"
+                Grid.Row="0" Grid.Column="10" />
+        <Button Content="追加"
+                Command="{Binding Path=AppendMenu}"
+                CommandParameter="record"
+                Grid.Row="0" Grid.Column="11" />
+        <DataGrid ItemsSource="{Binding Path=RecordList}"
+                  SelectedIndex="{Binding Path=RecordCode}"
+                  HeadersVisibility="Column"
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single"
+                  ColumnHeaderHeight="24"
+                  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="12"
+                  b:DataGridBehavior.Columns="{Binding Path=ColumnList}">
+          <DataGrid.Columns>
+            <DataGridTemplateColumn Header="削除" Width="35" CanUserResize="False">
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                  <Button Content="削除"
+                          Command="{Binding Path=DataContext.RemoveMenu, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGrid}}"
+                          CommandParameter="{Binding}" />
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </Grid>
+    </Grid>
+    <!-- 操作領域(↑) -->
+
+    <!-- ステータス領域(↓) -->
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*" />
+        <ColumnDefinition Width="80" />
+      </Grid.ColumnDefinitions>
+      <Border BorderBrush="#688CAF"
+              BorderThickness="1"
+              Margin="0,5,0,0"
+              Grid.Column="0">
+        <TextBlock Text="{Binding Path=ResultText}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center">
+          <TextBlock.Style>
+            <Style TargetType="TextBlock">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=ResultFlag}" Value="True">
+                  <Setter Property="Foreground" Value="#FF0000" />
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </TextBlock.Style>
+        </TextBlock>
+      </Border>
+      <Border BorderBrush="#688CAF"
+              BorderThickness="1"
+              Margin="5,5,0,0"
+              Grid.Column="1">
+        <TextBlock Text="Ver.1.0.0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+      </Border>
+    </Grid>
+    <!-- ステータス領域(↑) -->
+  </Grid>
+</Window>
