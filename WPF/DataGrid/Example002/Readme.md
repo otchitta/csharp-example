@@ -6,14 +6,14 @@
 ### 実装ポイント
 1. `DataGridBehavior`にて列の名称と表示をビューモデルにバインドしている（`DataGridBehavior`内の`CreateColumn`メソッド内を参照）
 1. `DataGridBehavior`を利用して`MainWindow.xaml.cs`内のコードビハインドを除去している（ソースコードの流用性が目的であるが`DataGridBehavior`内にて`ColumnViewModel`を直接扱ってる為、あまり意味がない）
-1. `DataGrid.Columns.Clear()`を実行するとXAMLで定義した（`DataGridBehavior`で作成していない）列まで削除されてしまう為、`DataGridBehavior+ColumnsHandler`内にて削除を行うかどうかの判別を行っている（`DataGridBehavior`内の`CreateColumn`と`RemoveColumn`を参照）
+1. `DataGrid.Columns.Clear()`を実行するとXAMLで定義した列[^xaml_column]まで削除されてしまう為、`DataGridBehavior+ColumnsHandler`内にて削除を行うかどうかの判別を行っている（`DataGridBehavior`内の`CreateColumn`と`RemoveColumn`を参照）
 
 ### 未実装項目について
-以下の内容は実装していない（実装を行ったら~~打ち消し線~~を入れる）
-* 列一覧側でのドラッグ＆ドロップにて順序入れ替え（`DataGridBehavior`にてMoveとReplaceが未確認の為）
-* 列一覧または行一覧の幅を極端に狭くすると表示領域からはみ出てしまいデザイン的によろしくない（左記領域に対して`ScrollViewer`をラップするのが良い）
-* `RecordViewModel`の要素（プロパティー)が固定である為、あまり汎用性が効かない(`System.Data.DataTable`を利用するサンプルもあれば良い）  
-  注記：`System.Data.DataTable`を直接`DataGrid#ItemsSource`にバインドすれば表示は行えるがバインド後に列の削除を行っても画面に反映されなかった記憶がある（記憶であり現時点では未確認）
+以下の内容は実装していない
+* 列一覧側でのドラッグ＆ドロップにて順序入れ替え（`DataGridBehavior`にてMoveとReplaceの動作が未確認の為）
+* 列一覧または行一覧の幅を極端に狭くすると表示領域からはみ出てしまいデザイン的によろしくない（`ScrollViewer`をラップするのが良い）
+* `RecordViewModel`の要素（プロパティー）が固定である為、あまり汎用性が効かない（`System.Data.DataTable`を利用するサンプルもあれば良い）  
+  注記：`System.Data.DataTable`を直接`DataGrid#ItemsSource`にバインドすれば表示は行えるがバインド後に列の削除を行っても画面に反映されなかった記憶がある（記憶であり現時点での確認は行っていない）
 * ヘルプメニューのバージョン情報は実装しない（デザイン上の体裁の為、定義しているのみ）
 
 ### 備忘録
@@ -52,7 +52,8 @@ Repeat 2 times:
 * 上記未実装項目より優先してExample003を作成する（データベース処理が優先）
 
 ---
-[^close_error]: エラーの内容自体はメモリ書き込みに失敗しているとの事であるが`DataGridBehavior`の可能性が高いと思われる。  
+[^xaml_column]: XAMLで定義した列も初期表示にて削除されると思われたが、実際には定義された列も表示されたので実行順序が添付ビヘイビアの方が優先されるのかもしれない（xamlの行番号的には添付ビヘイビアが先ではあるが不明で保留する）
+[^close_error]: エラーの内容自体はメモリ書き込みに失敗しているとの事であるが`DataGridBehavior`の可能性が高いと思われる  
   今までは`MainWindow.xaml.cs`にて`DispatcherUnhandledException`をハンドリングしていなかったので気づかなかっただけの可能性もある  
   発生タイミングは上記の記載どおりウィンドウを閉じるタイミングのみとなる  
   時間があれば調査を行いたい
