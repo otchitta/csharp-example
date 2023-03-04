@@ -1,0 +1,53 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Otchitta.Example002.MainWindow"
+        Title="ウィンドウメッセージ送信"
+        Height="450"
+        Width="800">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="100*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="100*" />
+    </Grid.RowDefinitions>
+    <TextBlock Text="X座標:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Grid.Row="0" Grid.Column="0" />
+    <TextBox x:Name="PositionX"
+             Text="100"
+             Grid.Row="0" Grid.Column="1" />
+
+    <TextBlock Text="Y座標:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Grid.Row="1" Grid.Column="0" />
+    <TextBox x:Name="PositionY"
+             Text="100"
+             Grid.Row="1" Grid.Column="1" />
+
+    <TextBlock Text="実行:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Grid.Row="2" Grid.Column="0" />
+    <ComboBox x:Name="EventType" Grid.Row="2" Grid.Column="1"
+              SelectedIndex="0">
+      <ComboBoxItem Content="左クリック" />
+    </ComboBox>
+
+    <Button Content="実行"
+            Click="ActionInvokeMenu"
+            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
+
+    <TextBlock x:Name="ResultText"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" />
+  </Grid>
+</Window>

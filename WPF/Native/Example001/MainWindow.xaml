@@ -1,0 +1,31 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Otchitta.Example001.MainWindow"
+        Title="ウィンドウメッセージ受信"
+        Left="0"
+        Top="0"
+        Width="800"
+        Height="600"
+        WindowStyle="None"
+        FontFamily="MS Gothic"
+        MouseDown="ActionMouseDown"
+        MouseUp="ActionMouseUp">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="100*" />
+        <RowDefinition Height="100*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <TextBlock x:Name="ResultText"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Grid.Row="0" />
+      <TextBlock x:Name="WindowText"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Grid.Row="1" />
+      <Button Content="終了"
+              Click="ActionFinishMenu"
+              Grid.Row="2" />
+    </Grid>
+</Window>

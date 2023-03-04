@@ -1,0 +1,25 @@
+﻿<!--
+  ウィンドウメッセージ受信サンプルプログラムです。
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- プロジェクト定義 -->
+  <PropertyGroup>
+    <!-- 実行環境関連定義 -->
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <!-- ソースコード関連定義 -->
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- ライブラリ定義 -->
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="5.1.2" />
+  </ItemGroup>
+
+  <!-- 出力ファイル定義 -->
+  <ItemGroup>
+    <None Update="NLog.config" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

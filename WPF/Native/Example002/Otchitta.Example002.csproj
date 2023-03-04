@@ -1,0 +1,15 @@
+﻿<!--
+  ウィンドウメッセージ受信サンプルプログラムです。
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- プロジェクト定義 -->
+  <PropertyGroup>
+    <!-- 実行環境関連定義 -->
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <!-- ソースコード関連定義 -->
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>
